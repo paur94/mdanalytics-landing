@@ -260,6 +260,7 @@ function Navbar() {
     { label: 'Integrations', id: 'integrations' },
     { label: 'Intelligence', id: 'intelligence' },
     { label: 'How It Works', id: 'how-it-works' },
+    { label: 'Manuals', id: 'manuals' },
     { label: 'FAQ', id: 'faq' },
   ];
 
@@ -1728,6 +1729,91 @@ function FAQSection() {
   );
 }
 
+// ─── User Manuals Section ─────────────────────────────────────────────────────
+
+function UserManualsSection() {
+  const manuals = [
+    {
+      label: 'MDAnalytics & INquiry',
+      title: 'MDAnalytics և INquiry Օգտատիրոջ ձեռնարկ',
+      src: 'https://vigorous-comte-24f.notion.site/ebd//354bd56f2bc68050a32bede98d22bc56',
+    },
+    {
+      label: 'CHplus',
+      title: 'CHplus Օգտատիրոջ ձեռնարկ',
+      src: 'https://vigorous-comte-24f.notion.site/ebd//35abd56f2bc681c5b68ae5be9eecaa06',
+    },
+    {
+      label: 'ScoreFlex v1',
+      title: 'ScoreFlex v1 Օգտատիրոջ ձեռնարկ',
+      src: 'https://vigorous-comte-24f.notion.site/ebd//35abd56f2bc681619936fc225668194f',
+    },
+  ];
+
+  const [active, setActive] = useState(0);
+
+  return (
+    <section id="manuals" className="py-24 bg-[#080d1a] relative overflow-hidden">
+      <div
+        className="absolute inset-0"
+        style={{ backgroundImage: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(56,189,248,0.08) 0%, transparent 60%)' }}
+      />
+      <div className="relative max-w-5xl mx-auto px-6">
+        <Reveal className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-medium mb-4">
+            Documentation
+          </div>
+          <h2 className="text-4xl font-bold text-gray-100 tracking-tight">
+            User Manuals
+          </h2>
+          <p className="mt-4 text-gray-500 text-base max-w-2xl mx-auto leading-relaxed">
+            Step-by-step guides for every product in the platform.
+          </p>
+        </Reveal>
+
+        <Reveal>
+          <div className="flex flex-wrap justify-center gap-2 mb-6">
+            {manuals.map((m, i) => (
+              <button
+                key={m.label}
+                onClick={() => setActive(i)}
+                className={`px-4 py-2 rounded-xl text-sm font-medium border transition-all duration-300 ${active === i
+                  ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/25 shadow-[0_0_20px_rgba(52,211,153,0.12)]'
+                  : 'bg-white/3 text-gray-400 border-white/[0.07] hover:text-gray-200 hover:border-white/12 hover:bg-white/5'
+                  }`}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.08}>
+          <div className="rounded-2xl border border-white/10 bg-white/3 overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,0.4)]">
+            <div className="px-4 py-2.5 border-b border-white/[0.07] flex items-center gap-2 bg-white/[0.02]">
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/50" />
+              </div>
+              <span className="ml-2 text-gray-500 text-xs truncate">{manuals[active].title}</span>
+            </div>
+            <iframe
+              key={manuals[active].src}
+              src={manuals[active].src}
+              title={manuals[active].title}
+              className="w-full block bg-white"
+              style={{ height: 640, border: 'none' }}
+              loading="lazy"
+              allowFullScreen
+            />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 // ─── Demo Request Section ─────────────────────────────────────────────────────
 
 function DemoRequestSection() {
@@ -1930,6 +2016,7 @@ function Footer() {
       { label: 'How It Works', action: () => scrollTo('how-it-works') },
     ],
     Resources: [
+      { label: 'User Manuals', action: () => scrollTo('manuals') },
       { label: 'FAQ', action: () => scrollTo('faq') },
     ],
     Company: [
@@ -2010,6 +2097,7 @@ export default function LandingPage() {
         <CHPlusSection />
         <HowItWorksSection />
         <BenefitsSection />
+        <UserManualsSection />
         <FAQSection />
         <DemoRequestSection />
       </main>
