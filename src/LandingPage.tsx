@@ -1790,7 +1790,7 @@ function UserManualsSection() {
 
         <Reveal delay={0.08}>
           <div className="rounded-2xl border border-white/10 bg-white/3 overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,0.4)]">
-            <div className="px-4 py-2.5 border-b border-white/[0.07] flex items-center gap-2 bg-white/[0.02]">
+            <div className="px-4 py-2.5 border-b border-white/[0.07] flex items-center gap-2 bg-white/2">
               <div className="flex gap-1.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
